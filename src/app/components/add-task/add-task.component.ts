@@ -9,7 +9,7 @@ import { Task } from '../../Task';
   styleUrls: ['./add-task.component.css']
 })
 export class AddTaskComponent implements OnInit {
-  @Output() onAddTask: EventEmitter<Task> = new EventEmitter();
+  @Output() onAddTask: EventEmitter<Task> = new EventEmitter<Task>();
   text: string;
   day: string;
   reminder: boolean = false;
@@ -17,11 +17,11 @@ export class AddTaskComponent implements OnInit {
   subscription: Subscription;
 
   constructor(private uiService: UiService) {
-    this.subscription = this.uiService.onToggle().subscribe((value) => this.showAddTask = value);
+    
   }
 
   ngOnInit(): void {
-      
+    this.subscription = this.uiService.onToggle().subscribe((value) => this.showAddTask = value);
   }
 
   onSubmit(){
